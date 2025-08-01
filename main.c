@@ -5,6 +5,21 @@
 
 #define MEMSIZE_MB_MPLY 1048576UL // 1024 * 1024
 
+void app_pause(const char *message)
+{
+    int key;
+
+    printf(message);
+    getchar(); // Fix leftovers
+
+    /* NOTE: Press ENTER key to continue */
+    do
+    {
+        key = getchar();
+
+    } while (key != EOF && key != '\r' && key != '\n');
+}
+
 int main(int argc, char *argv[])
 {
     unsigned long memSizeMB = 0;
@@ -36,10 +51,10 @@ int main(int argc, char *argv[])
 
     /* Actually use the memory (write data) */
     memset(memPtr, 'A', memSize);
-    printf("Allocated memory size=%luMB...\n", memSizeMB);
+    printf("Allocated memory size=%luMB.\n", memSizeMB);
 
-    /* Hold the memory until user press a key */
-    system("pause");
+    /* Hold the memory until user press ENTER key */
+    app_pause("Press ENTER key to exit...");
 
     /* Free allocated memory */
     free(memPtr);
