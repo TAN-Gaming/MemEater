@@ -1,9 +1,9 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <limits.h>
 
-#define MEMSIZE_MB_MPLY 1048576UL // 1024 * 1024
+#define MEMSIZE_MB_MPLY ((size_t)1048576) // 1024 * 1024
 
 void app_pause(const char *message)
 {
@@ -22,18 +22,18 @@ void app_pause(const char *message)
 
 int main(int argc, char *argv[])
 {
-    unsigned long memSizeMB = 0;
-    unsigned long memSize;
+    size_t memSizeMB = 0;
+    size_t memSize;
     void *memPtr;
 
     printf("Memory allocation testing program\n");
 
     /* Input memory size in MB from user */
     printf("Enter size in MB: ");
-    scanf("%lu", &memSizeMB);
+    scanf("%zu", &memSizeMB);
 
     /* Prevent overflow */
-    if (memSizeMB >= ULONG_MAX / MEMSIZE_MB_MPLY)
+    if (memSizeMB >= SIZE_MAX / MEMSIZE_MB_MPLY)
     {
         printf("ERROR: Invalid memory size.\n");
         return 1;
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     /* Actually use the memory (write data) */
     memset(memPtr, 'A', memSize);
-    printf("Allocated memory size=%luMB.\n", memSizeMB);
+    printf("Allocated memory size=%zuMB.\n", memSizeMB);
 
     /* Hold the memory until user press ENTER key */
     app_pause("Press ENTER key to exit...");
