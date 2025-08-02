@@ -9,7 +9,7 @@ void app_pause(const char *message)
 {
     int key;
 
-    printf(message);
+    printf("%s", message);
     getchar(); // Fix leftovers
 
     /* NOTE: Press ENTER key to continue */
