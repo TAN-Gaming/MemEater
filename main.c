@@ -30,7 +30,11 @@ int main(int argc, char *argv[])
 
     /* Input memory size in MB from user */
     printf("Enter size in MB: ");
+#ifdef _WIN32
+    scanf("%Iu", &memSizeMB);
+#else
     scanf("%zu", &memSizeMB);
+#endif
 
     /* Prevent overflow */
     if (memSizeMB >= SIZE_MAX / MEMSIZE_MB_MPLY)
@@ -51,7 +55,11 @@ int main(int argc, char *argv[])
 
     /* Actually use the memory (write data) */
     memset(memPtr, 'A', memSize);
+#ifdef _WIN32
+    printf("Allocated memory size=%IuMB.\n", memSizeMB);
+#else
     printf("Allocated memory size=%zuMB.\n", memSizeMB);
+#endif
 
     /* Hold the memory until user press ENTER key */
     app_pause("Press ENTER key to exit...");
