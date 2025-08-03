@@ -1,7 +1,5 @@
 /*
- * MemEater
- *
- * A simple memory stress testing tool.
+ * MemEater - A simple memory stress testing tool.
  *
  * Written in 2024-2025 by Thamatip Chitpong <tangaming123456@outlook.com>
  *
