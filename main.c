@@ -1,5 +1,5 @@
 /*
- * Author: Thamatip Chitpong, 2024-2025
+ * Copyright (C) 2024-2025 Thamatip Chitpong <tangaming123456@outlook.com>
  *
  * SPDX-License-Identifier: 0BSD
  * License-Filename: LICENSE.txt
